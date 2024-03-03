@@ -22,3 +22,6 @@ cd pulp
 ./build.sh
 cd ..
 
+cat seed/bin/fdseed.bin pulp/bin/pulp.sys peel/peel.jar > fruityos.img
+truncate -s 252K fruityos.img
+gdb --command=debug.gdb
