@@ -10,3 +10,6 @@ Bootloader loads and decompresses kernel then bootloader passes pointer to initr
 	1. kernel formats ramfs
 	2. kernel unpacks initrd into ramfs
 	3. ramfs uses fixed 512b blocks with pointers at end to next block
+
+Write linux userland pulp loader for testing kernel without reboots. mmap first 2 MB of memory space.
+Don't make stdin and stdout file handles. Use putch and getch instead.
