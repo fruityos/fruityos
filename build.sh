@@ -22,6 +22,18 @@ cd pulp
 ./build.sh
 cd ..
 
-cat seed/bin/fdseed.bin pulp/bin/pulp.sys peel/peel.jar > fruityos.img
+echo Creating initial RAM filesystem...
+mkdir initrd
+cd initrd
+mkdir bin
+cd bin
+cp ../../peel/bin/* .
+cd ..
+../peel/bin/jar.fap c initrd.jar
+cd ..
+
+cat seed/bin/fdseed.bin pulp/bin/pulp.sys initrd/initrd.jar > fruityos.img
+stat --printf="FruityOS size is %s bytes.\n" fruityos.img
 truncate -s 1440K fruityos.img
-gdb --command=debug.gdb
+
+rm -rf initrd
