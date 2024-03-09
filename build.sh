@@ -25,10 +25,12 @@ cd ..
 echo Creating initial RAM filesystem...
 mkdir initrd
 cd initrd
+mkdir lib
 mkdir bin
-cd bin
-cp ../../peel/bin/* .
-cd ..
+cp ../peel/lib/libpith.fap lib/libpith.asm
+cp ../peel/lib/_start.fap lib/_start.asm
+cp ../peel/bin/* bin
+cp -rp ../peel/src src
 ../peel/bin/jar.fap c initrd.jar
 cd ..
 
